@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>My Notes</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menuApp">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menuApp="matMenu">
+    <button mat-menu-item (click)="onClose()">Cerrar sesion</button>
+  </mat-menu>
+</mat-toolbar>
+<div class="row">
+  <div class="col-xs-12">
+    <button mat-button [matMenuTriggerFor]="menu">Cuadernos</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'/app/home/dashboard'">Inicio</button>
+      <button mat-menu-item [routerLink]="'/app/notes/new'">Nuevo</button>
+    </mat-menu>
+  </div>
+</div>

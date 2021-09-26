@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from "../../material/material.module";
+import { NgxsModule } from "@ngxs/store";
+import { NoteState } from "../../state/note/note.state";
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { MaterialModule } from "../../material/material.module";
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NgxsModule.forFeature([NoteState])
   ]
 })
 export class HomeModule { }

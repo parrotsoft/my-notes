@@ -10,13 +10,16 @@ import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemNoteServices } from "./memory-db/InMemNoteServices";
 import { HttpClientModule } from "@angular/common/http";
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { NgxsModule } from "@ngxs/store";
+import { environment } from "../environments/environment";
+import { NoteStateModel } from "./state/note/note.state";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
@@ -24,7 +27,10 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemNoteServices, { delay: 1000 }),
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

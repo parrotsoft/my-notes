@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: 'new',
     component: NewNoteComponent
+  },
+  {
+    path: 'edit/:id',
+    component: NewNoteComponent
   }
 ];
 
